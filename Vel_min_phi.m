@@ -47,12 +47,13 @@ indice = 0;
 t_vmin = 0;
 for j = 1:length(t1)
     t = linspace(1,t1(j),a);
+    phi_t = phi(t1(j));
     if j==1
         for i = 1:length(t)
             X_t(:,i) = X(t(i),X0(:));
         end
     V_fin(j) = sqrt(X_t(4,100)^2 + X_t(5,100)^2 + X_t(6,100)^2); 
-    delta_V_fin(j) = abs(V_0 - V_fin(j));
+    delta_V_fin(j) = V_0 - V_fin(j);
     vmin_x = X_t(4,100);
     vmin_y = X_t(5,100);
     vmin_z = X_t(6,100);
@@ -65,7 +66,9 @@ for j = 1:length(t1)
             X_t_1(:,i) = X(t(i),X0(:));
         end   
         V_fin(j) = sqrt(X_t_1(4,100)^2 + X_t_1(5,100)^2 + X_t_1(6,100)^2); 
-        delta_V_fin(j) = abs(V_0 - V_fin(j));
+        delta_V_fin(j) = V_0 - V_fin(j);
+        %somma con il primo deltaV
+        %I = somma deltaVs
         if delta_V_fin(j) < delta_V_fin(j-1)
             vmin_x = X_t_1(4,100);
             vmin_y = X_t_1(5,100);
