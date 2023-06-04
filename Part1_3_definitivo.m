@@ -3,12 +3,12 @@
 
 
 
-function [Delta_v, t_DV_min ] = TwoImp_min(PosVelChief, mean_motion, Orbital_period)
+function [Delta_V, t_DV_min ] = TwoImp_min(PosVelDeputy, mean_motion, Orbital_period)
 n = mean_motion;
 T = Orbital_period;
 tau = T/2;
 n_imp = 2;
-X0 = PosVelChief;
+X0 = PosVelDeputy;
 
 
 A = [zeros(3),eye(3);[3*(n^2) 0 0 0 2*n 0; 0 0 0 -2*n 0 0; 0 0 -n^2 0 0 0]];
@@ -38,6 +38,7 @@ Total_Impulse=sqrt(Delta_v(1,i)^2+Delta_v(2,i)^2+Delta_v(3,i)^2)+sqrt(Delta_V_2(
     if Total_Impulse<Delta_V 
         Delta_V=Total_Impulse;
         t_DV_min=i;
+        %Delta_v_m = Delta_v + Delta_V_2;
     end
    
 end
