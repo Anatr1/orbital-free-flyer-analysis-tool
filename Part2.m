@@ -5,26 +5,50 @@ disp('0: Fixed Joint')
 disp('1: Revolute Joint')
 disp('2: Prismatic Joint')
 Joint=input('Please, insert the desired option: ');
+
+
 %--- Manipulator Description a la DH ---%    
-disp(['Insert base link mass [kg]',':'])
-m0 = input('m0:');
-m = zeros(1,5);
-for i = 1 : 5
-    disp(['Insert link',num2str(i),' mass [kg]',':'])
-    m(i) =input('mass: ');
-end
+% disp(['Insert base link mass [kg]',':'])
+% m0 = input('m0:');
+% m = zeros(1,5);
+% for i = 1 : 5
+%     disp(['Insert link',num2str(i),' mass [kg]',':'])
+%     m(i) =input('mass: ');
+% end
+% 
+% %
+% disp(['Insert base link lenght [m]',':'])
+% l0 = input('l0:');
+% l = zeros(1,5);
+% s = zeros(1,5);
+% for i = 1 : 5
+%     disp(['Insert link', num2str(i),' lenghts and widths [m]',':'])
+%     l(i) =input('lenght:');
+%     s(i) =input('width:');
+% end
 
-%
-disp(['Insert base link lenght [m]',':'])
-l0 = input('l0:');
-l = zeros(1,5);
-s = zeros(1,5);
+m0=100;
+% for i = 1:5
+%     m(i) = 5;
+% end
+ l0=0.25;
 for i = 1 : 5
-    disp(['Insert link', num2str(i),' lenghts and widths [m]',':'])
-    l(i) =input('lenght:');
-    s(i) =input('width:');
+%     disp(['Insert link', num2str(i),' lenghts and widths [m]',':'])
+   
+%     l(i) = 0.25 + l(i)/5;
+    s(i) = 0.025;
 end
+l(1) = 0.4;
+l(2) = 0.4;
+l(3) = 0.4;
+l(4) = 0.4;
+l(5) = 0.4;
 
+m(1) = 5;
+m(2) = 6;
+m(3) = 7;
+m(4) = 8;
+m(5) = 9;
 
 base_side = 2*l0;
 man_side = 2*l;
@@ -69,11 +93,11 @@ data.man(i).I=diag([1,1,data.man(i).mass/12*(man_side(i)^2+man_width(i)^2)]);   
 end
 
 %End-Effector 
-data.EE.theta=45; %Rotation around z-axis
+data.EE.theta=0; %Rotation around z-axis
 data.EE.d=0; %Translation along z-axis
 
 %--- Create robot structure ---%
 [robot,TEE_Ln] = DH_Serial2robot(data);   %go from the parameters of description of the manipulator to the paremeters we expect
 
 
-%INPUT OF SCRIPT2 SIMULATE
+%INPUT OF PART2_2

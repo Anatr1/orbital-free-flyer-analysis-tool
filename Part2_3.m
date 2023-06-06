@@ -1,6 +1,6 @@
-clear all
-clc
-close all
+% clear all
+% clc
+% close all
 Part2
 Part2_2
 
@@ -43,42 +43,74 @@ plot(SCMt(:,1),SCMt(:,2),'LineWidth', 3, 'color','k','DisplayName','CoM')
 hold on
 txt = '\leftarrow C at t_0';
 text(SCMt(1,1),SCMt(1,2),txt,'FontSize',14) 
-plot(C0_t(:,1),C0_t(:,2),'LineWidth', 2, 'color','k','DisplayName','C0')
+
+plot(C0_t(:,1),C0_t(:,2),'LineWidth', 2, 'color','g','DisplayName','C0')
 txt = '\leftarrow C0 at t_0';
-text(C0_t(1,1),C0_t(1,2),txt,'FontSize',14) 
-plot(C1_t(:,1),C1_t(:,2),'LineWidth', 2, 'color','k','DisplayName','C0')
+text(C0_t(1,1),C0_t(1,2),txt,'FontSize',14,'color','g' ) 
+plot(x_v_C0,y_v_C0,'LineWidth', 1.5, 'color','g','DisplayName','C0')
+
+plot(C1_t(:,1),C1_t(:,2),'LineWidth', 2, 'color','r','DisplayName','C0')
 txt = '\leftarrow C1 at t_0';
-text(C1_t(1,1),C1_t(1,2),txt,'FontSize',14) 
-plot(Oj1_t(:,1),Oj1_t(:,2),'LineWidth', 2, 'color','k','DisplayName','C0')
+text(C1_t(1,1),C1_t(1,2),txt,'FontSize',14,'color','r') 
+plot(Oj1_t(:,1),Oj1_t(:,2),'LineWidth', 2, 'color','r','DisplayName','C0')
 txt = '\leftarrow Oj1 at t_0';
-text(Oj1_t(1,1),Oj1_t(1,2),txt,'FontSize',14) 
-plot(C2_t(:,1),C2_t(:,2),'LineWidth', 2, 'color','r','DisplayName','C0')
+text(Oj1_t(1,1),Oj1_t(1,2),txt,'FontSize',14,'color','r') 
+plot(x_1,L1,'LineWidth', 1.5, 'color','r','DisplayName','C0')
+
+plot(C2_t(:,1),C2_t(:,2),'LineWidth', 2, 'color','b','DisplayName','C0')
 txt = '\leftarrow C2 at t_0';
-text(C2_t(1,1),C2_t(1,2),txt,'FontSize',14,Color='r')
-plot(Oj2_t(:,1),Oj2_t(:,2),'LineWidth', 2, 'color','r','DisplayName','C0')
+text(C2_t(1,1),C2_t(1,2),txt,'FontSize',14,Color='b')
+plot(Oj2_t(:,1),Oj2_t(:,2),'LineWidth', 2, 'color','b','DisplayName','C0')
 txt = '\leftarrow Oj2 at t_0';
-text(Oj2_t(1,1),Oj2_t(1,2),txt,'FontSize',14,Color='r')
-plot(EE2_t(:,1),EE2_t(:,2),'LineWidth', 2, 'color','r','DisplayName','C0')
+text(Oj2_t(1,1),Oj2_t(1,2),txt,'FontSize',14,Color='b')
+plot(x_2,L2,'LineWidth', 1.5, 'color','b','DisplayName','C0')
+
+plot(C3_t(:,1),C3_t(:,2),'LineWidth', 2, 'color','y','DisplayName','C0')
+txt = '\leftarrow C3 at t_0';
+text(C3_t(1,1),C3_t(1,2),txt,'FontSize',14,Color='y') 
+plot(Oj3_t(:,1),Oj3_t(:,2),'LineWidth', 2, 'color','y','DisplayName','C0')
+txt = '\leftarrow Oj3 at t_0';
+text(Oj3_t(1,1),Oj3_t(1,2),txt,'FontSize',14,Color='y') 
+plot(x_3,L3,'LineWidth', 1.5, 'color','y','DisplayName','C0')
+
+plot(C4_t(:,1),C4_t(:,2),'LineWidth', 2, 'color','c','DisplayName','C0')
+txt = '\leftarrow C4 at t_0';
+text(C4_t(1,1),C4_t(1,2),txt,'FontSize',14,Color='c')
+plot(Oj4_t(:,1),Oj4_t(:,2),'LineWidth', 2, 'color','c','DisplayName','C0')
+txt = '\leftarrow Oj4 at t_0';
+text(Oj4_t(1,1),Oj4_t(1,2),txt,'FontSize',14,Color='c')
+plot(x_4,L4,'LineWidth', 1.5, 'color','c','DisplayName','C0')
+
+plot(C5_t(:,1),C5_t(:,2),'LineWidth', 2, 'color','k','DisplayName','C0')
+txt = '\leftarrow C5 at t_0';
+text(C5_t(1,1),C5_t(1,2),txt,'FontSize',14,Color='k')
+plot(Oj5_t(:,1),Oj5_t(:,2),'LineWidth', 2, 'color','k','DisplayName','C0')
+txt = '\leftarrow Oj5 at t_0';
+text(Oj5_t(1,1),Oj5_t(1,2),txt,'FontSize',14,Color='k')
+
+plot(EE5_t(:,1),EE5_t(:,2),'LineWidth', 2, 'color','k','DisplayName','C0')
 txt = '\leftarrow EE at t_0';
-text(EE2_t(1,1),EE2_t(1,2),txt,'FontSize',14,Color='r')
+text(EE5_t(1,1),EE5_t(1,2),txt,'FontSize',14,Color='k')
+plot(x_5,L5,'LineWidth', 1.5, 'color','k','DisplayName','C0')
 grid minor
+axis([-0.5 3 -0.5 3]);
 xlabel('x')
 ylabel('y')
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-figure('Name',strcat(sysname,'_NSysMoMwrtC0'),'DefaultAxesFontSize',16)
-fprintf('\n')
-fprintf('\n')
-fprintf('***********************\n')
-fprintf(strcat('CAPTION OF Figure ', sysname,'_NSysMoMwrtC0:\n'))
-fprintf('Evolution in time of the Moment of Momentum w.r.t. C0 (CoM L0)\n') 
-fprintf('***********************\n')
-fprintf('\n')
-fprintf('\n')
-plot(t,MoMt_C0(:,3)-MoMt_C0(1,3)*ones(size(MoMt_C0)),'LineWidth', 2, 'color','k')
-grid minor
-xlabel('t [s]')
-ylabel('MoM wrt C0 minus its Init. Value')
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% figure('Name',strcat(sysname,'_NSysMoMwrtC0'),'DefaultAxesFontSize',16)
+% fprintf('\n')
+% fprintf('\n')
+% fprintf('***********************\n')
+% fprintf(strcat('CAPTION OF Figure ', sysname,'_NSysMoMwrtC0:\n'))
+% fprintf('Evolution in time of the Moment of Momentum w.r.t. C0 (CoM L0)\n') 
+% fprintf('***********************\n')
+% fprintf('\n')
+% fprintf('\n')
+% plot(t,MoMt_C0(:,3)-MoMt_C0(1,3)*ones(size(MoMt_C0)),'LineWidth', 2, 'color','k')
+% grid minor
+% xlabel('t [s]')
+% ylabel('MoM wrt C0 minus its Init. Value')
+% % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 figure('Name',strcat(sysname,'_NSysLinearMomwrtC0'),'DefaultAxesFontSize',16)
 fprintf('\n')
 fprintf('\n')
@@ -92,7 +124,7 @@ plot(t,Linear_Mom_CO(:,1)-Linear_Mom_CO(1,1)*ones(size(Linear_Mom_CO)),'LineWidt
 grid minor
 xlabel('t [s]')
 ylabel('X Linear Momentum component wrt C0 minus its Init. Value')
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 figure('Name',strcat(sysname,'_NSysLinearMomwrtC0'),'DefaultAxesFontSize',16)
 fprintf('\n')
 fprintf('\n')
@@ -106,7 +138,7 @@ plot(t,Linear_Mom_CO(:,2)-Linear_Mom_CO(1,2)*ones(size(Linear_Mom_CO)),'LineWidt
 grid minor
 xlabel('t [s]')
 ylabel('Y Linear Momentum component wrt C0 minus its Init. Value')
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 figure('Name',strcat(sysname,'_NSysMoMwrtOI'),'DefaultAxesFontSize',16)
 fprintf('\n')
 fprintf('\n')
@@ -120,8 +152,8 @@ plot(t, MoMt_OI(:,3)-MoMt_OI(1,3)*ones(size(MoMt_OI)),'LineWidth', 2, 'color','k
 grid minor
 xlabel('t [s]')
 ylabel('MoM wrt OI minus its Init. Value')
-legend('MoM wrt OI on L_1 and L_2',Location='best')
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+legend('MoM wrt OI on L_1,L_2,L_3,L_4,L_5',Location='best')
+% % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 figure('Name',strcat(sysname,'_NSysMoMwrtC'),'DefaultAxesFontSize',16)
 fprintf('\n')
 fprintf('\n')
@@ -135,7 +167,7 @@ plot(t, MoMt_sysC(:,3)-MoMt_sysC(1,3)*ones(size(MoMt_sysC)),'LineWidth', 2, 'col
 grid minor
 xlabel('t [s]')
 ylabel('MoM wrt C minus its Init. Value')
-legend('MoM wrt C on L_1 and L_2',Location='best')
+legend('MoM wrt C on L_1,L_2,L_3,L_4,L_5',Location='best')
 figure('Name',strcat(sysname,'_NAxialMoMmwrtj1'),'DefaultAxesFontSize',16)
 fprintf('\n')
 fprintf('\n')
@@ -151,7 +183,7 @@ plot(t, Axial_MoMm_j2(:,1),'LineWidth', 2, 'color','r')
 grid minor
 xlabel('t [s]')
 ylabel('Axial MoMm at j1 and j2')
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 figure('Name',strcat(sysname,'_thetas_dot_thetas'),'DefaultAxesFontSize',16)
 fprintf('\n')
 fprintf('\n')
@@ -168,17 +200,17 @@ for ii=1:num_rotational_dof
     hold on
     grid minor
     plot(t,dot_thetas(:,ii),'LineWidth', 0.5, 'color','r')
-    %plot(t,Y(:,(2*ii-1):(2*ii)),'LineWidth', 2, 'color','k')
-    %plot(t,Y(:,(2*ii-1):(2*ii)),'LineWidth', 2, 'color','k')
+%     plot(t,Y(:,(2*ii-1):(2*ii)),'LineWidth', 2, 'color','k')
+%     plot(t,Y(:,(2*ii-1):(2*ii)),'LineWidth', 2, 'color','k')
     xlabel('t [s]')
     ylabel(strcat('$\theta$',num2str(ii),', $\dot{\theta}$',num2str(ii)),'Interpreter','latex')
 end
 
-
-
-
-
-
-
-
-
+% 
+% 
+% 
+% 
+% 
+% 
+% 
+% 

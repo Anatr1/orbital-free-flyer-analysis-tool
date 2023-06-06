@@ -2,7 +2,7 @@
 
 % Specify the orbit parameters, such as the radius and gravitational parameter of the circular orbit.
 mu = 398600; % Gravitational parameter of Earth (km^3/s^2)
-a = 7000; % Radius of the circular orbit (km)
+a = 6871; % Radius of the circular orbit (km)
 n = sqrt(mu/a^3); % Mean motion (rad/s)
 % Initialize variables
 deltaVTotal = 0; % Total Delta V used
@@ -30,8 +30,14 @@ ylabel('y (km)');
 zlabel('z (km)');
 title('HCW Equations Simulation');
 
+% Plot the chief's orbit
+theta = linspace(0, 2*pi, 100);
+chiefOrbitX = a * cos(theta);
+chiefOrbitY = a * sin(theta);
+chiefOrbitZ = zeros(size(theta));
+plot3(chiefOrbitX, chiefOrbitY, chiefOrbitZ, 'r--');
+hold on;
 
-% Set up the simulation loop:
 
 %% Simulation loop
 
@@ -39,8 +45,6 @@ title('HCW Equations Simulation');
 % While the objective of reaching the target is not achieved, continue the simulation loop.
 while ~reachedTarget
     % Propagate HCW equations
-
-    % Time step size for the simulation.
     dt = 0.1; % Time step (s)
     dxdt = vx0;
     dydt = vy0;
@@ -63,13 +67,18 @@ while ~reachedTarget
     if distance <= 0.1 % Example termination condition (within 100 meters of target)
         reachedTarget = true;
     end
+
+    % Plot the deputy's orbit
+    deputyOrbitX = x0 + a * cos(theta);
+    deputyOrbitY = y0 + a * sin(theta);
+    deputyOrbitZ = z0 * ones(size(theta));
     
     % Update visualization
     plot3(x0, y0, z0, 'b.'); % Plot deputy position
-    hold on;
     plot3(0, 0, 0, 'ro'); % Plot target position
-    hold off;
+    plot3(deputyOrbitX, deputyOrbitY, deputyOrbitZ, 'b--'); 
     drawnow;
+
     
     % Display current Delta V used
     disp(['Current Delta V used: ' num2str(deltaVTotal) ' km/s']);
