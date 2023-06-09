@@ -62,12 +62,20 @@ POSITION FROM CHIEF.__
 Usage: `Rendezvous_Simulator.m` on MATLAB command window.
 
 ## Rotational-Internal Motion
+ 
+### FFP6L5R Robot Description
 
-MI SERVE AIUTO ANCHE QUA
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl nec ultricies ultricies, nunc nisl ultrices
-nisl, vitae aliqu
+This script creates the data structure 'robot' where will be found the parameters of the free-flyer, like masses and geometrical parameters. It will be the input of the script named "FF6L_5R_Robot_Simulate".
 
-Usage: `LoremIpsum.m` on MATLAB command window.
+### FFP6L5R - Robot Simulate
+
+Starting from the data stored in "robot" the script computes the motion of the moving base robotic manipulator following the process of the recursive analysis, by developing the equations of motion and numerically integrating them. The evolution of the motion, while no torques are acting on the revolute joints, is studied and the gravitational effect is included. 
+
+### FFP6L5R - Robot Figures
+
+This script plots the states of the angles and angular rates of the joints, with the momenta characterizing the motion of the free-flyer and finally an animation (in postprocessing) of the motion of the system.
+
+Usage: Open the three scripts and run the script `FFP6L5R - Robot Figures`.
 
 ## References
 
