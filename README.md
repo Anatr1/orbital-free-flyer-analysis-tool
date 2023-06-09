@@ -20,16 +20,16 @@ The tool is based on the *Hill-Clohessy-Wiltshire* equations.
 
 The first script (*HCW_IC_MakeFigs.m*) aims to replicate some figures reported in the book ”*Fundamentals of
 Astrodynamics and Applications*” (D. Vallado), which plots the evolution in time of the position
-of Deputy with respect to Chief given different initial conditions on position and
+of Deputy with respect to Chief given different initial conditions on position and 
 velocity by resolving the Hill-Clohessy-Wiltshire set of equations.
 
 Usage: `HCW_IC_MakeFigs.m` on MATLAB command window.
 
 ### Part 2: Minimum total V two-impulse maneuver
 
-MI SERVE AIUTO SU STA PARTE
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl nec ultricies ultricies, nunc nisl ultrices
-nisl, vitae aliqu
+The second script (*TwoImp_min.m*) computes the minimum total V two-impulse maneuvers, knowing the inizial conditions
+of position and velocity of Deputy w.r.t.target. The function solves the Hill-Clohessy_wiltshire equations 
+by considering a maximum final time equal to half orbit period.
 
 Usage: `[Delta_V, Delta_v_comp, t_DV_min ] = TwoImp_min(PosVelDeputy,PosVelChief, mean_motion, Orbital_period)` in MATLAB
 code
