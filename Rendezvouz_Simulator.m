@@ -23,6 +23,11 @@
 %   - G: decrease the time rate of the simulation
 %   - SPACE: pause the simulation
 %   - X: exit the simulation
+%
+% WARNING: BEWARE OF THE PERSPECTIVE! A 3D trajectory plotted on a 2D screen could
+% be misleading. FOCUS ON THE VALUES OF THE UI ELEMENTS TO UNDERSTAND THE 
+% DEPUTY'S POSITION AND VELOCITY W.R.T. THE CHIEF, IN PARTICULAR THE PROJECTED 
+% POSITION FROM CHIEF.
 
 
 clc
@@ -105,7 +110,7 @@ exit = false;
 uicontrol('Parent',figure(1),'Style','text','Position',[10 50 100 70],'String', "ΔV [m/s]:");
 total_delta_v=uicontrol('Parent',figure(1),'Style','text','Position',[10 20 100 70],'String', "0");
 
-uicontrol('Parent',figure(1),'Style','text','Position',[10 230 100 100],'String', "Deputy Position:");
+uicontrol('Parent',figure(1),'Style','text','Position',[10 230 100 100],'String', "Deputy Position [m]:");
 pos=uicontrol('Parent',figure(1),'Style','text','Position',[10 220 100 70],'String', current_pos_vel(1:3));
 
 uicontrol('Parent',figure(1),'Style','text','Position',[10 350 130 70],'String', "Distance From Chief [m]:");

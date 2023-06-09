@@ -23,3 +23,8 @@
 %   - G: decrease the time rate of the simulation
 %   - SPACE: pause the simulation
 %   - X: exit the simulation
+%
+% WARNING: BEWARE OF THE PERSPECTIVE! A 3D trajectory plotted on a 2D screen could
+% be misleading. FOCUS ON THE VALUES OF THE UI ELEMENTS TO UNDERSTAND THE 
+% DEPUTY'S POSITION AND VELOCITY W.R.T. THE CHIEF, IN PARTICULAR THE PROJECTED 
+% POSITION FROM CHIEF.
