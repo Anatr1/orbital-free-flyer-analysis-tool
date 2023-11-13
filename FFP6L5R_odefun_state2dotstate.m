@@ -1,9 +1,26 @@
+%FINAL PROJECT --- GROUP 18
+%
+% Federico Mustich, Lorenzo Porpiglia, Gaetana Gaia Spanò, Vincenzo Trentacapilli
+%
+% This script compute the dot_state during a certain time span.
+
+% INPUTS
+% t = time span
+% state = [23x1 matrix containing the kinematic current conditions]
+% ControlActions = [11x1 matrix containing the control actions on the joints]
+% NonControlWrenches = [36x1 matrix containing the non control wrenches]
+% Robot = [data structure containing the robot parameters]
+%
+%OUTPUTS
+%
+%
+% dot_state = [23x1 matrix corresponding to the columns of the state matrix
+% containing the differential kinematics parameters]
+
+
+
+
 function dot_state = odefun_state_2_dotstate(t, state,  ControlActions, NonControlWrenches, robot)
-h = 500*10^3; %[m]
-mhu = 3.986004418*10^14; %[m^3 s^-2]
-r_earth = 6371e3; %[m]
-R_tgt = r_earth+h;
-n = sqrt(mhu/(R_tgt)^3); % moto medio
 % CONFIGURATION AT TIME t, provided by the numerical integrator 
 % state_out(i,1)   q_IB(1) at time t_out(i,1) 
 % state_out(i,2)   q_IB(2) at time t_out(i,1) 
@@ -66,24 +83,13 @@ tau_control_joint = ControlActions(7:11);
 % NonControlWrenches(:,4) -> WB_3
 % NonControlWrenches(:,5) -> Wm_4
 % NonControlWrenches(:,6) -> Wm_5
-
-
-I = zeros(3,3,6);
-I(:,:,1) = C_IB *robot.base_link.inertia* C_IB';
-for i = 1 : 5
-    I(:,:,i+1) = RL(:,:,i)'*robot.links(i).inertia*RL(:,:,i);
-end
-
-h1 = [-cos(n*t); -sin(n*t); 0];
-
-WB = (3*mhu/R_tgt^3)*[cross(h1, I(:,:,1)*h1); 0;0;0];
-Wm_1 = (3*mhu/R_tgt^3)*[cross(h1, I(:,:,2)*h1); 0;0;0];
-Wm_2 = (3*mhu/R_tgt^3)*[cross(h1, I(:,:,3)*h1); 0;0;0];
-Wm_3 = (3*mhu/R_tgt^3)*[cross(h1, I(:,:,4)*h1); 0;0;0];
-Wm_4 = (3*mhu/R_tgt^3)*[cross(h1, I(:,:,5)*h1); 0;0;0];
-Wm_5 = (3*mhu/R_tgt^3)*[cross(h1, I(:,:,6)*h1); 0;0;0];
+WB = NonControlWrenches(1:6);
+Wm_1 = NonControlWrenches(7:12);
+Wm_2 = NonControlWrenches(13:18);
+Wm_3 = NonControlWrenches(19:24);
+Wm_4 = NonControlWrenches(25:30);
+Wm_5 = NonControlWrenches(31:36);
 Wm_f = [Wm_1,Wm_2,Wm_3,Wm_4,Wm_5];
-
 [uBdot,umdot] = FD(tau_control_B,tau_control_joint,WB,Wm_f,tB,tm,P0,pm,IB,Im,Bij,Bi0,uB,um,robot);
 
 % Get quaternion velocity

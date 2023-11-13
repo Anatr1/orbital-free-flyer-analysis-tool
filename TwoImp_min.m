@@ -1,7 +1,20 @@
+
+
+
 function [Delta_V, Delta_v_comp, t_DV_min ] = TwoImp_min(PosVelDeputy,PosVelChief, mean_motion, Orbital_period)
-% ORBITAL ROBOTICS AND DISPUTED SAPCE SYSTEMS
-% VINCENZO TRENTACAPILLI, GAIA SPANO', LORENZO PORPIGLIA, FEDERICO MUSTICH
-% written on 2023-07-06
+% ORBITAL ROBOTICS AND DISPUTED SPACE SYSTEMS
+% VINCENZO TRENTACAPILLI, GAETANA GAIA SPANO', LORENZO PORPIGLIA, FEDERICO MUSTICH
+
+%  The function TwoImp_min, computes the minimun total V two-impulse
+% maneuvers, knowing the initial conditions of position and velocity of 
+% Deputy w.r.t. target. To do this, the function considers a maximum final 
+% time equal to half orbit period.   
+
+% Initial conditions of position and velocity are given as components of 
+% two vectors (total of six parameters).
+% After Clohessy-Wiltshire equations are solved to compute the minimum
+% Delta_V and the corresponding time for the Deputy to reach the target.
+
 %
 % INPUTS
 % PosVelDeputy = [1,6 matrix of real numbers describing the components of position and velocity vector of the deputy wrt chief's position]
@@ -15,11 +28,11 @@ function [Delta_V, Delta_v_comp, t_DV_min ] = TwoImp_min(PosVelDeputy,PosVelChie
 % t_DV_min = minimum time to execute the maneuver of rendezvous [s]
 
 
-n = mean_motion;        
-T = Orbital_period;     
-tau = T/2;              
+n = mean_motion;  % [s^-1]      
+T = Orbital_period; % [s]    
+tau = T/2;           % [s]              
 n_imp = 2;              % Impulses number          
-X0 = PosVelDeputy';     % Deputy positions and velocities
+X0 = PosVelDeputy';     % Deputy positions and velocities [m] [m/s]
 
 
 A = [zeros(3),eye(3);[3*(n^2) 0 0 0 2*n 0; 0 0 0 -2*n 0 0; 0 0 -n^2 0 0 0]];
@@ -59,4 +72,4 @@ end
 
 
 
-   
+

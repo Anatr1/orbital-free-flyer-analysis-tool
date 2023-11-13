@@ -10,6 +10,8 @@ Marcello Romano.
 
 ## Introduction
 
+![](./figures/figure_0.png)
+
 This project aims to provide a tool to analyze the orbital motion of a free flyer (Deputy) in the proximity of a target
 (Chief).
 The tool is based on the *Hill-Clohessy-Wiltshire* equations.
@@ -17,6 +19,8 @@ The tool is based on the *Hill-Clohessy-Wiltshire* equations.
 ## Translational Motion
 
 ### Part 1: Evolution in time of the position of Deputy w.r.t. Chief
+
+![](./figures/figure_1.png)
 
 The first script (*HCW_IC_MakeFigs.m*) aims to replicate some figures reported in the book ”*Fundamentals of
 Astrodynamics and Applications*” (D. Vallado), which plots the evolution in time of the position
@@ -35,6 +39,8 @@ Usage: `[Delta_V, Delta_v_comp, t_DV_min ] = TwoImp_min(PosVelDeputy,PosVelChief
 code
 
 ### Part 3: Game-like Simulation of Rendezvous between Deputy and Chief
+
+![](./figures/figure_2.png)
 
 The third script simulates the rendezvous between Deputy and Chief.
 The deputy is initially setted at a random position and velocity. The chief is considered fixed at the origin.
@@ -63,11 +69,21 @@ Usage: `Rendezvous_Simulator.m` on MATLAB command window.
 
 ## Rotational-Internal Motion
 
-MI SERVE AIUTO ANCHE QUA
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl nec ultricies ultricies, nunc nisl ultrices
-nisl, vitae aliqu
+![](./figures/figure_3.png)
+ 
+### FFP6L5R Robot Description
 
-Usage: `LoremIpsum.m` on MATLAB command window.
+This script creates the data structure 'robot' where will be found the parameters of the free-flyer, like masses and geometrical parameters. It will be the input of the script named "FF6L_5R_Robot_Simulate".
+
+### FFP6L5R - Robot Simulate
+
+Starting from the data stored in "robot" the script computes the motion of the moving base robotic manipulator following the process of the recursive analysis, by developing the equations of motion and numerically integrating them. The evolution of the motion, while no torques are acting on the revolute joints, is studied and the gravitational effect is included. 
+
+### FFP6L5R - Robot Figures
+
+This script plots the states of the angles and angular rates of the joints, with the momenta characterizing the motion of the free-flyer and finally an animation (in postprocessing) of the motion of the system.
+
+Usage: Open the three scripts and run the script `FFP6L5R - Robot Figures`.
 
 ## References
 
