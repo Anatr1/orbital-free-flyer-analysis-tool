@@ -1,8 +1,8 @@
 clc
 clear all
 
-disp(['Inserire tempo iniziale in minuti',':'])
-t_0 = input('tempo iniziale:');  %[minutes]
+disp(['Insert initial time (in minutes)',':'])
+t_0 = input('Initial time:');  %[minutes]
 t_0 = 60*t_0; %[s]
 V_0 = [-0.1 -0.04 -0.02]; %[m/s]
 x_0 = zeros(1,3); %[m]
